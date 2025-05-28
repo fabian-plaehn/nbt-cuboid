@@ -3,7 +3,10 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'  # Triggers only on version tags like v1.0.0
+      - 'v*'
+
+permissions:
+  contents: write  # Needed for GitHub Releases
 
 jobs:
   build-and-release:
@@ -18,12 +21,18 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Build
-        run: cargo build --release
+      - name: Install cross
+        run: cargo install cross
 
-      - name: Create GitHub Release
+      - name: Build Windows release using cross
+        run: cross build --release --target x86_64-pc-windows-gnu
+
+      - name: Zip binary
+        run: zip nbt-quadrant-windows.zip target/x86_64-pc-windows-gnu/release/nbt-quadrant.exe
+
+      - name: Upload release ZIP
         uses: softprops/action-gh-release@v2
         with:
-          files: target/release/nbt-quadrant.exe
+          files: nbt-quadrant-windows.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
