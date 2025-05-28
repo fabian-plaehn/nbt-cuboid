@@ -1,0 +1,14 @@
+[package]
+name = "nbt-quadrant"
+version = "0.1.0"
+edition = "2021"
+
+[profile.dev]
+incremental = true
+
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+fastnbt = "2.5.0"
+flate2 = "1.0"
+byteorder = "1.5"
