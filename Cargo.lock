@@ -67,7 +67,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "nbt-quadrant"
+name = "nbt-cuboid"
 version = "0.1.0"
 dependencies = [
  "byteorder",
