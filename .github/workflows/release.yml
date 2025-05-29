@@ -28,11 +28,13 @@ jobs:
         run: cross build --release --target x86_64-pc-windows-gnu
 
       - name: Zip binary
-        run: zip nbt-quadrant-windows.zip target/x86_64-pc-windows-gnu/release/nbt-cuboid.exe
-
+        run: |
+          cd target/x86_64-pc-windows-gnu/release
+          zip ../../../../nbt-cuboid-windows.zip nbt-cuboid.exe
+          
       - name: Upload release ZIP
         uses: softprops/action-gh-release@v2
         with:
-          files: nbt-quadrant-windows.zip
+          files: nbt-cuboid-windows.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
