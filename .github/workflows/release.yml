@@ -30,8 +30,10 @@ jobs:
       - name: Zip binary
         run: |
           cd target/x86_64-pc-windows-gnu/release
-          zip ../../../../nbt-cuboid-windows.zip nbt-cuboid.exe
-          
+          zip ${{ github.workspace }}/nbt-cuboid-windows.zip nbt-cuboid.exe
+      - name: List workspace files
+        run: ls -lah
+
       - name: Upload release ZIP
         uses: softprops/action-gh-release@v2
         with:
