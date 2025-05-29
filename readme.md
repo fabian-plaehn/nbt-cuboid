@@ -14,7 +14,7 @@ A simple Rust CLI tool to generate Minecraft structure NBT files filled with a s
    ```
 2. Run the executable and follow the prompts:
    ```powershell
-   target\release\nbt-quadrant.exe
+   target\release\nbt-cuboid.exe
    ```
 3. Enter the desired size and block name (e.g., `minecraft:stone`).
 4. The generated NBT file will be saved in the current directory.
